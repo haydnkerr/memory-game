@@ -275,6 +275,7 @@ function initiateOnlineGame() {
 
 
 function initiateGame() {
+    homeMenu.classList.add('display-none')
 
     while (pointTrackerContainer.firstChild !== null) {
         pointTrackerContainer.removeChild(pointTrackerContainer.firstChild);
