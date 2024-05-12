@@ -137,10 +137,15 @@ let winMenu = document.querySelector('.win-menu')
 let inGameMenuBtn = document.getElementById('in-game-menu-btn')
 let leaderboardBtn = document.getElementById('leaderboard-btn')
 let leaderboardContainer = document.querySelector('.leaderboard-container')
+let goBackLeaderboardBtn = document.querySelector('.go-back-leaderboard-btn')
 
 inGameMenuBtn.addEventListener('click', toggleInGameMenu)
 resumeGameBtn.addEventListener('click', resumeGame)
 restartBtn.addEventListener('click', initiateGame)
+goBackLeaderboardBtn.addEventListener('click', function() {
+    winMenu.classList.remove('display-none');
+    leaderboardContainer.classList.add('display-none')
+})
 leaderboardBtn.addEventListener('click', function() {
     
     fetchLeaderboard(gridSize);

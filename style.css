@@ -539,6 +539,13 @@ p {
     .username-container {
         flex-direction: column;
     }
+   
+}
+
+@media only screen and (max-width: 600px) {
+    .username-container {
+        flex-direction: column;
+    }
     
     
     .username-container input {
