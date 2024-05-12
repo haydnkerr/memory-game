@@ -311,7 +311,7 @@ function determinePair() {
         if (numOfMatches == gridSize / 2) {
             winFunction();
             if (numPlayers == 1) {
-                submitScore();
+                setTimeout(submitScore, 400);
             }
             
             gameStart = false
