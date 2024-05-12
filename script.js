@@ -183,7 +183,19 @@ function fetchLeaderboard(grid) {
             } else if(data[i].score < 60) {
                 playerRankingScore.textContent = "0:" + data[i].score
             } else {
-                playerRankingScore.textContent = data[i].score
+                let mins = Math.floor(data[i].score / 60);
+                let secs = data[i].score % 60;
+                if (mins > 0) {
+                    if (secs < 10) {
+                        playerRankingScore.textContent = mins + ":0" + secs 
+                    } else {
+                        playerRankingScore.textContent = mins+ ":" + secs 
+                    }
+                } else {
+                    playerRankingScore.textContent = secs 
+                }
+                
+                
             }
 
             let playerMoves = document.createElement('p')
