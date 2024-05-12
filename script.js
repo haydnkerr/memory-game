@@ -167,7 +167,14 @@ function fetchLeaderboard(grid) {
             playerRanking.appendChild(playerRankingName)
 
             let playerRankingScore = document.createElement('p')
-            playerRankingScore.textContent = data[i].score
+            if (data[i].score < 10) {
+                playerRankingScore.textContent = "0:0" + data[i].score
+            } else if(data[i].score < 60) {
+                playerRankingScore.textContent = "0:" + data[i].score
+            } else {
+                playerRankingScore.textContent = data[i].score
+            }
+            
             playerRanking.appendChild(playerRankingScore)
             leaderboard.appendChild(playerRanking)
         }

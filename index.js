@@ -83,7 +83,7 @@ app.get('/leaderboard', async (req, res) => {
             tableName = 'highscores_6x6';
         }
 
-        const { data, error } = await supabase.from(tableName).select('*').order('score', { ascending: true }).limit(5);
+        const { data, error } = await supabase.from(tableName).select('*').order('score', { ascending: true }).limit(8);
 
 
         if (error) {
