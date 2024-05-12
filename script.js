@@ -163,6 +163,9 @@ function fetchLeaderboard(grid) {
         console.log(data.length);
         // Handle the fetched data here
         let leaderboard = document.querySelector('.leaderboard')
+        while (leaderboard.firstChild) {
+            leaderboard.removeChild(leaderboard.firstChild);
+        }
         for (let i = 0; i < data.length; i++) {
             let rank = i + 1
             let playerRanking = document.createElement('div'); 
