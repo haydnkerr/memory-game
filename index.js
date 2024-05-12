@@ -48,9 +48,14 @@ app.post('/postScore', async (req, res) => {
         } else if (gridSize == 36) {
             tableName = 'highscores_6x6';
         }
+        var Filter = require('bad-words'),
+    filter = new Filter();
+
+    cleanWord = filter.clean(playerName)
+ 
 
         const { data, error } = await supabase.from(tableName).insert({
-            player_name: playerName,
+            player_name: cleanWord,
             score: time,
             moves: totalMoves
         });
