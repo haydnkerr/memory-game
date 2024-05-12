@@ -285,7 +285,11 @@ function determinePair() {
         numOfMatches += 1
 
         if (numOfMatches == gridSize / 2) {
-            winFunction()
+            winFunction();
+            if (numPlayers == 1) {
+                submitScore();
+            }
+            
             gameStart = false
             populateWinningScreen()
         }
@@ -313,6 +317,27 @@ function determinePair() {
     }
 
     changePlayer()
+}
+
+function submitScore() {
+    let totalTime = 0
+    if (minutes > 0) {
+        totalTime = minutes * 60
+    }
+    totalTime += seconds
+    console.log("submitting")
+    fetch('/postScore', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({playerName: playerName, totalMoves: totalMoves, time: totalTime, gridSize: gridSize})
+    }) 
+    .then(response => response.json())
+    .then(data => {
+        console.log(data)
+    })
+    .catch(error => console.error('Error fetching data:', error));
 }
 
 function winFunction() {
