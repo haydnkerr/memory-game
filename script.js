@@ -185,8 +185,14 @@ function fetchLeaderboard(grid) {
             } else {
                 playerRankingScore.textContent = data[i].score
             }
+
+            let playerMoves = document.createElement('p')
+            playerMoves.textContent = data[i].moves
+            playerMoves.classList.add('end-score')
+        
             
             playerRanking.appendChild(playerRankingScore)
+            playerRanking.appendChild(playerMoves)
             leaderboard.appendChild(playerRanking)
         }
     })

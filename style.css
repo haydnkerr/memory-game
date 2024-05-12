@@ -480,6 +480,18 @@ p {
     color: #7191A5
 }
 
+.leaderboard-titles {
+display: grid;
+grid-template-columns: 2fr 1fr 1fr;
+width: 100%;
+padding: 0px 15px;;
+}
+
+.end-score {
+    display: flex;
+    justify-content: flex-end;
+}
+
 .win-menu, .leaderboard-container {
     background-color: #FCFCFC;
     border-radius: 8px;
@@ -508,6 +520,11 @@ p {
     background-color: var(--secondary-color);
     border-radius: 10px;
     padding: 15px
+}
+
+.player-ranking {
+    display: grid;
+grid-template-columns: 2fr 1fr 1fr;
 }
 
 .player-stats-container.winner, .player-ranking.winner {
