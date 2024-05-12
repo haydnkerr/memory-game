@@ -1,5 +1,10 @@
-let gameStart = false
+let gameStart = false;
+let playerName;
+let usernameContainer = document.querySelector('.username-container')
+let usernameInput = document.querySelector('.username')
+let submitNameBtn = document.querySelector('.submit-name-btn')
 let homeMenu = document.getElementById('home-menu-container')
+let mainMenu = document.querySelector('.home-menu')
 let startGameBtn = document.getElementById('start-game-btn')
 let findGameBtn = document.getElementById('find-game-btn')
 let createLobbyBtn = document.getElementById('create-lobby-btn')
@@ -34,7 +39,18 @@ let firstChoice = []
 let secondChoice = []
 
 /********** Home Menu Event Listeners **********/
-gameTypeBtn.forEach(function(btn) {
+
+submitNameBtn.addEventListener('click', function (event) {
+    event.preventDefault()
+    if (usernameInput.value.length > 0) {
+        playerName = usernameInput.value;
+        usernameContainer.classList.add('display-none');
+        mainMenu.classList.remove('display-none')
+    }
+})
+
+
+gameTypeBtn.forEach(function (btn) {
     btn.addEventListener('click', function () {
         for (let i = 0; i < 2; i++) {
             gameTypeBtn[i].classList.remove('active')
@@ -105,8 +121,7 @@ startGameBtn.addEventListener('click', function () {
 })
 
 findGameBtn.addEventListener('click', function () {
-
-    initiateOnlineGame()
+    socket.emit("find", {})
 })
 
 findLobbyBtn.addEventListener('click', function () {
@@ -118,11 +133,51 @@ let resumeGameBtn = document.getElementById('resume-game-btn')
 let newGameBtn = document.getElementById('new-game-btn')
 let restartBtn = document.getElementById('restart-btn')
 let inGameMenu = document.querySelector('.in-game-menu-container')
+let winMenu = document.querySelector('.win-menu')
 let inGameMenuBtn = document.getElementById('in-game-menu-btn')
+let leaderboardBtn = document.getElementById('leaderboard-btn')
+let leaderboardContainer = document.querySelector('.leaderboard-container')
 
 inGameMenuBtn.addEventListener('click', toggleInGameMenu)
 resumeGameBtn.addEventListener('click', resumeGame)
 restartBtn.addEventListener('click', initiateGame)
+leaderboardBtn.addEventListener('click', function() {
+    
+    fetchLeaderboard(gridSize);
+});
+
+function fetchLeaderboard(grid) {
+    fetch(`/leaderboard?gridSize=${grid}`, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    }) 
+    .then(response => response.json())
+    .then(data => {
+        console.log(data.length);
+        // Handle the fetched data here
+        let leaderboard = document.querySelector('.leaderboard')
+        for (let i = 0; i < data.length; i++) {
+            let rank = i + 1
+            let playerRanking = document.createElement('div'); 
+            playerRanking.classList.add('player-ranking')
+            let playerRankingName = document.createElement('p')
+            playerRankingName.textContent = rank + '. '+ data[i].player_name
+            playerRanking.appendChild(playerRankingName)
+
+            let playerRankingScore = document.createElement('p')
+            playerRankingScore.textContent = data[i].score
+            playerRanking.appendChild(playerRankingScore)
+            leaderboard.appendChild(playerRanking)
+        }
+    })
+    .catch(error => console.error('Error fetching data:', error));
+    winMenu.classList.add('display-none');
+    leaderboardContainer.classList.remove('display-none')
+}
+
+
 newGameBtn.addEventListener('click', function () {
 
     toggleInGameMenu();
@@ -137,6 +192,8 @@ function toggleInGameMenu() {
 function resumeGame() {
     inGameMenu.classList.add('display-none')
 }
+
+
 
 /******************* Win Container  *******************/
 let setupNewGameBtn = document.getElementById('setup-new-game-btn')
@@ -187,21 +244,21 @@ gamePiece.forEach(function (btn) {
 function chooseTile() {
     if (gameType == "offline") {
         let flipPiece = this.querySelector('.game-piece-inner')
-    if (!flipPiece.classList.contains('chosen-piece')) {
-        if (numOfTurns < 2) {
-            flipPiece.classList.add('chosen-piece')
-            if (numOfTurns == 0) {
-                choiceOneValue = this.value
-            } else {
-                choiceTwoValue = this.value
-            }
-            numOfTurns += 1
+        if (!flipPiece.classList.contains('chosen-piece')) {
+            if (numOfTurns < 2) {
+                flipPiece.classList.add('chosen-piece')
+                if (numOfTurns == 0) {
+                    choiceOneValue = this.value
+                } else {
+                    choiceTwoValue = this.value
+                }
+                numOfTurns += 1
 
+            }
         }
-    }
-    if (numOfTurns > 1) {
-        setTimeout(determinePair, 750)
-    }
+        if (numOfTurns > 1) {
+            setTimeout(determinePair, 750)
+        }
     }
 }
 
@@ -585,3 +642,12 @@ function determineTime() {
 
 
 }
+
+
+
+/***********     This is for Online play      ***************/
+
+let lobbyCode;
+
+
+const socket = io()

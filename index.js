@@ -1,8 +1,20 @@
+require('dotenv').config()
+
 const express = require("express");
 const app = express();
 const path = require("path");
 const http = require("http");
 const { Server } = require("socket.io");
+const Filter = require('bad-words');
+const port = process.env.PORT || 3000
+
+const { createClient } = require('@supabase/supabase-js');
+
+// Initialize Supabase client
+const supabaseUrl = 'https://yauqifhmqzoaxfpkgcyu.supabase.co';
+const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InlhdXFpZmhtcXpvYXhmcGtnY3l1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTU0NTIwNTgsImV4cCI6MjAzMTAyODA1OH0.KDzNkAWRAmP3rWzqViiGwTkWfDMrhjb1F8qx9Bdf3bU';
+const supabase = createClient(supabaseUrl, supabaseKey);
+
 
 const server = http.createServer(app);
 
@@ -15,6 +27,43 @@ let lobbyArr = []
 let playerArray = []
 let playerOneArray = []
 let playerTwoArray = []
+
+app.get('/', (req,res) => {
+    return res.sendFile("index.html")
+})
+
+app.get('/leaderboard', async (req, res) => {
+    const { gridSize } = req.query;
+
+    try {
+        let tableName;
+        if (gridSize == 4) {
+            tableName = 'highscores_2x2';
+        } else if (gridSize == 6) {
+            tableName = 'highscores_3x2';
+        } else if (gridSize == 16) {
+            tableName = 'highscores_4x4';
+        } else if (gridSize == 36) {
+            tableName = 'highscores_6x6';
+        }
+
+        const { data, error } = await supabase.from(tableName).select('*').order('score', { ascending: true }).limit(5);
+
+
+        if (error) {
+            throw error;
+        }
+
+        console.log(data[0].player_name)
+
+        // Send data as response
+        res.json(data);
+    } catch (error) {
+        console.error('Error fetching data from database:', error);
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
+});
+
 
 
 io.on("connection", (socket) => {

@@ -19,7 +19,11 @@
   <!--      Home Menu     -->
   <section id="home-menu-container" class="home-menu-container">
     <h2>memory</h2>
-    <div class="home-menu">
+    <form class="username-container">
+      <input type="text" placeholder="Enter Your Name" class="username" maxlength="10">
+      <button type="submit" class="btn orange-btn submit-name-btn">Submit</button>
+    </form>
+    <div class="home-menu display-none">
         <div class="home-menu-item">
             <h3>Game Type</h3>
             <div class="button-container">
@@ -110,6 +114,15 @@
   </section>
 
   <section id="win-container" class="win-container">
+    <div class="leaderboard-container display-none">
+      <h1>Leaderboard</h1>
+      <div class="leaderboard">
+        
+      </div>
+      <div class="button-container">
+        <button class="btn orange-btn">Go Back</button>
+      </div>
+    </div>
     <div class="win-menu">
       <div class="player-win-menu display-none " id="single-player-win-container">
         <h1>You did it!</h1>
@@ -134,9 +147,14 @@
         </div>
       </div>
       <div class="button-container">
-        <button class="btn orange-btn" id="win-restart-btn">Restart</button>
+        <button class="btn " id="win-restart-btn">Restart</button>
         <button class="btn" id="setup-new-game-btn">Setup New Game</button>
       </div>
+      <div class="button-container ">
+        <button class="btn orange-btn" id="leaderboard-btn">View Leaderboard</button>
+
+      </div>
+
     </div>
     
 
