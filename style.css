@@ -71,12 +71,18 @@ p {
     flex-direction: row;
 }
 
+.username-statement {
+    font-size: 1.4rem;
+    margin-bottom: 15px;
+    color: white;
+}
 
 .username-container input {
     width: 75%;
-    padding: 15px;
+    padding: 5px 15px;
     border-radius: 50px;
     border: 1px solid gray;
+
 }
 
 .home-menu-item {
@@ -503,12 +509,12 @@ p {
     padding: 15px
 }
 
-.player-stats-container.winner {
+.player-stats-container.winner, .player-ranking.winner {
     background-color: #152938;
     color: white;
 }
 
-.player-stats-container.winner p {
+.player-stats-container.winner p, .player-ranking.winner p {
     color: white;
 }
 

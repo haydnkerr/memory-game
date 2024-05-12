@@ -170,6 +170,9 @@ function fetchLeaderboard(grid) {
             let rank = i + 1
             let playerRanking = document.createElement('div'); 
             playerRanking.classList.add('player-ranking')
+            if (i == 0) {
+                playerRanking.classList.add('winner')
+            }
             let playerRankingName = document.createElement('p')
             playerRankingName.textContent = rank + '. '+ data[i].player_name
             playerRanking.appendChild(playerRankingName)
