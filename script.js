@@ -276,24 +276,32 @@ winRestartBtn.addEventListener('click', initiateGame)
 gamePiece.forEach(function (btn) {
     btn.addEventListener('click', chooseTile)
 })
+let lastClickTime = 0;
+const cooldownDuration = 400; // Set cooldown duration (e.g., 600ms)
 
 function chooseTile() {
-    if (gameType == "offline") {
-        let flipPiece = this.querySelector('.game-piece-inner')
-        if (!flipPiece.classList.contains('chosen-piece')) {
-            if (numOfTurns < 2) {
-                flipPiece.classList.add('chosen-piece')
-                if (numOfTurns == 0) {
-                    choiceOneValue = this.value
-                } else {
-                    choiceTwoValue = this.value
-                }
-                numOfTurns += 1
+    const currentTime = Date.now();
+    if (currentTime - lastClickTime < cooldownDuration) {
+        return;
+    }
+    lastClickTime = currentTime;
 
+    if (gameType == "offline") {
+        let flipPiece = this.querySelector('.game-piece-inner');
+        if (!flipPiece.classList.contains('chosen-piece') && !flipPiece.classList.contains('discovered-piece')) {
+            if (numOfTurns < 2) {
+                console.log('tick');
+                flipPiece.classList.add('chosen-piece');
+                if (numOfTurns == 0) {
+                    choiceOneValue = this.value;
+                } else {
+                    choiceTwoValue = this.value;
+                }
+                numOfTurns += 1;
             }
         }
-        if (numOfTurns > 1) {
-            setTimeout(determinePair, 750)
+        if (numOfTurns == 2) {
+            setTimeout(determinePair, 600);
         }
     }
 }
