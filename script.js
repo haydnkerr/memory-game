@@ -135,17 +135,26 @@ let restartBtn = document.getElementById('restart-btn')
 let inGameMenu = document.querySelector('.in-game-menu-container')
 let winMenu = document.querySelector('.win-menu')
 let inGameMenuBtn = document.getElementById('in-game-menu-btn')
+let inGameLeaderboardBtn = document.getElementById('in-game-leaderboard-btn')
 let leaderboardBtn = document.getElementById('leaderboard-btn')
 let leaderboardContainer = document.querySelector('.leaderboard-container')
 let goBackLeaderboardBtn = document.querySelector('.go-back-leaderboard-btn')
 
 inGameMenuBtn.addEventListener('click', toggleInGameMenu)
 resumeGameBtn.addEventListener('click', resumeGame)
-restartBtn.addEventListener('click', initiateGame)
+restartBtn.addEventListener('click', function () {
+    initiateGame();
+    gameboard.classList.toggle('display-none')
+})
 goBackLeaderboardBtn.addEventListener('click', function() {
     winMenu.classList.remove('display-none');
     leaderboardContainer.classList.add('display-none')
 })
+inGameLeaderboardBtn.addEventListener('click', function() {
+    
+    fetchLeaderboard(gridSize);
+});
+
 leaderboardBtn.addEventListener('click', function() {
     
     fetchLeaderboard(gridSize);
@@ -210,6 +219,7 @@ function fetchLeaderboard(grid) {
     })
     .catch(error => console.error('Error fetching data:', error));
     winMenu.classList.add('display-none');
+    inGameMenu.classList.add('display-none');
     leaderboardContainer.classList.remove('display-none')
 }
 
@@ -223,10 +233,12 @@ newGameBtn.addEventListener('click', function () {
 
 function toggleInGameMenu() {
     inGameMenu.classList.toggle('display-none')
+    gameboard.classList.toggle('display-none')
 }
 
 function resumeGame() {
     inGameMenu.classList.add('display-none')
+    gameboard.classList.toggle('display-none')
 }
 
 
@@ -352,7 +364,7 @@ function determinePair() {
     numOfTurns = 0
     totalMoves += 1
     totalMovesIndicator.innerHTML = totalMoves
-    totalMovesWin.innerHTML = totalMoves + " Moves"
+    totalMovesWin.innerHTML = totalMoves
 
     if (numPlayers == currentPlayer) {
         currentPlayer = 1

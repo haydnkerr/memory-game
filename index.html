@@ -35,7 +35,7 @@
     <section id="home-menu-container" class="home-menu-container">
       <h1>Lillie's memory Pads</h1>
 
-      <form class="username-container ">
+      <form class="username-container display-none">
         <input
           type="text"
           placeholder="Enter your name.."
@@ -47,7 +47,7 @@
           Submit
         </button>
       </form>
-      <div class="home-menu display-none">
+      <div class="home-menu ">
         <div class="home-menu-top">
           <div class="home-menu-item theme-menu">
             <h3 class="home-menu-item-heading theme-heading plank-bg plank-one">
@@ -124,7 +124,7 @@
     </section>
 
     <!--      In Game Menu     -->
-    <section class="in-game-menu-container display-none">
+    <section class="in-game-menu-container ">
       <div class="in-game-menu">
         <button class="btn plank-bg plank-one" id="restart-btn">Restart</button>
         <button class="btn plank-bg plank-two" id="new-game-btn">
@@ -133,7 +133,7 @@
         <button class="btn plank-bg plank-one" id="resume-game-btn">
           Resume
         </button>
-        <button class="btn plank-bg plank-two" id="leaderboard-btn">
+        <button class="btn plank-bg plank-two" id="in-game-leaderboard-btn">
           Leaderboard
         </button>
       </div>
@@ -143,8 +143,8 @@
 
     <section class="gameboard-container display-none" id="gameboard-container">
       <div class="gameboard-header">
-        <img src="./assets/logo.svg" />
-        <button class="orange-btn btn" id="in-game-menu-btn">Menu</button>
+        <img class="museum-logo" src="./assets/white-logo.png" />
+        <button class="btn plank-bg plank-one in-game-menu-btn" id="in-game-menu-btn">Menu</button>
       </div>
 
       <div class="gameboard-bg" id="gameboard-bg">
@@ -159,11 +159,11 @@
         ></div>
 
         <div class="stats time-tracker-container" id="time-tracker-container">
-          <div class="stats-cell">
+          <div class="stats-cell plank-bg plank-two">
             <p>Time</p>
             <h2 id="time-passed"></h2>
           </div>
-          <div class="stats-cell">
+          <div class="stats-cell plank-bg plank-one">
             <p>Moves</p>
 
             <h2 id="total-moves-indicator"></h2>
