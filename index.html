@@ -1,181 +1,230 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./assets/favicon-32x32.png"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap"
+      rel="stylesheet"
+    />
 
-  <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon-32x32.png">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@700&display=swap" rel="stylesheet">
+    <link
+      href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@700&display=swap"
+      rel="stylesheet"
+    />
 
-  <title>Memory game</title>
-  <link href="./style.css" rel="stylesheet">
+    <link
+      href="https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200..1000;1,200..1000&display=swap"
+      rel="stylesheet"
+    />
+    <title>Memory game</title>
+    <link href="./style.css" rel="stylesheet" />
+  </head>
 
-</head>
+  <body>
+    <!--      Home Menu     -->
+    <section id="home-menu-container" class="home-menu-container">
+      <h2>memory</h2>
 
-<body>
-  <!--      Home Menu     -->
-  <section id="home-menu-container" class="home-menu-container">
-    <h2>memory</h2>
-    
-    <form class="username-container">
-    
-        
-        <input type="text" placeholder="Enter your name.." class="username" maxlength="10">
-      
-      <button type="submit" class="btn orange-btn submit-name-btn">Submit</button>
-    </form>
-    <div class="home-menu display-none">
-        <div class="home-menu-item display-none">
-            <h3>Game Type</h3>
+      <form class="username-container display-none">
+        <input
+          type="text"
+          placeholder="Enter your name.."
+          class="username"
+          maxlength="10"
+        />
+
+        <button type="submit" class="btn orange-btn submit-name-btn">
+          Submit
+        </button>
+      </form>
+      <div class="home-menu ">
+        <div class="home-menu-top">
+          <div class="home-menu-item theme-menu">
+            <h3 class="home-menu-item-heading theme-heading plank-bg plank-one">
+              Theme
+            </h3>
             <div class="button-container">
-                <button class="active btn game-type-btn" value="offline">Offline</button>
-                <button class="btn game-type-btn" value="online">Online</button>
+              <button class="btn theme-btn lily-pad-bg" value="numbers">Numbers</button>
+              <button class="active btn theme-btn lily-pad-bg" value="icons">Icons</button>
             </div>
-            
-        </div>
-      <div class="home-menu-item theme-menu">
-        <h3>Select Theme</h3>
-        <div class="button-container">
-          <button class="btn theme-btn" value="numbers">Numbers</button>
-          <button class="active btn theme-btn" value="icons">Icons</button>
-        </div>
-      </div>
-      <div class="home-menu-item players-menu">
-        <h3>Number of Players</h3>
-        <div class="button-container">
-          <button class="active btn num-players-btn" value="1">1</button>
-          <button class="btn num-players-btn" value="2">2</button>
-          <button class="btn num-players-btn" value="3">3</button>
-          <button class="btn num-players-btn" value="4">4</button>
-        </div>
-      </div>
-      <div class="home-menu-item">
-        <h3>Grid Size</h3>
-        <div class="quad-btn-container">
-          <div class="button-container">
-            <button class="btn grid-size-btn" value="2">2x2</button>
-            <button value="3" class="btn grid-size-btn">3x2</button>
           </div>
-          <div class="button-container">
-            <button class="btn active grid-size-btn" value="4">4x4</button>
-            <button value="6" class="btn grid-size-btn">6x6</button>
+          <div class="home-menu-item players-menu">
+            <h3 class="players-heading plank-bg plank-two">Players</h3>
+            <div class="button-container">
+              <button class="active btn num-players-btn lily-pad-bg" value="1">1</button>
+              <button class="btn num-players-btn lily-pad-bg" value="2">2</button>
+              <!-- <button class="btn num-players-btn lily-pad-bg" value="3">3</button>
+              <button class="btn num-players-btn lily-pad-bg" value="4">4</button> -->
+            </div>
           </div>
         </div>
 
+        <div class="home-menu-middle">
+          <div class="home-menu-item">
+            <h3 class="grid-heading plank-bg plank-one">Grid Size</h3>
+            <div class="quad-btn-container">
+              <div class="button-container">
+                <button class="btn grid-size-btn lily-pad-bg" value="2">
+                  2x2
+                </button>
+                <button value="3" class="btn grid-size-btn lily-pad-bg">
+                  3x2
+                </button>
+              </div>
+              <div class="button-container">
+                <button class="btn active grid-size-btn lily-pad-bg" value="4">
+                  4x4
+                </button>
+                <!-- <button value="6" class="btn grid-size-btn lily-pad-bg">
+                  6x6
+                </button> -->
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="home-menu-bottom">
+          <img
+            class="home-lillie-pad lillie-reverse"
+            src="./assets/lillie-home-logo.png"
+          />
+          <button id="start-game-btn" class="btn start-game-btn">
+            Start Game
+          </button>
+          <img class="home-lillie-pad" src="./assets/lillie-home-logo.png" />
+        </div>
+
+        <div class="home-menu-item online-menu">
+          <div class="button-container">
+            <button id="find-game-btn" class="btn start-online-btn orange-btn">
+              Find Game
+            </button>
+            <button
+              id="create-lobby-btn"
+              class="btn start-online-btn orange-btn"
+            >
+              Create Lobby
+            </button>
+            <button id="find-lobby-btn" class="btn start-online-btn orange-btn">
+              Find Lobby
+            </button>
+          </div>
+        </div>
       </div>
-      <button id="start-game-btn" class=" btn start-game-btn orange-btn">Start Game</button>
-      <div class="home-menu-item online-menu">
+    </section>
+
+    <!--      In Game Menu     -->
+    <section class="in-game-menu-container display-none">
+      <div class="in-game-menu">
+        <button class="btn plank-bg plank-one" id="restart-btn">Restart</button>
+        <button class="btn plank-bg plank-two" id="new-game-btn">
+          New Game
+        </button>
+        <button class="btn plank-bg plank-one" id="resume-game-btn">
+          Resume
+        </button>
+        <button class="btn plank-bg plank-two" id="leaderboard-btn">
+          Leaderboard
+        </button>
+      </div>
+    </section>
+
+    <!--      Gameboard Container     -->
+
+    <section class="gameboard-container display-none" id="gameboard-container">
+      <div class="gameboard-header">
+        <img src="./assets/logo.svg" />
+        <button class="orange-btn btn" id="in-game-menu-btn">Menu</button>
+      </div>
+
+      <div class="gameboard-bg" id="gameboard-bg">
+        <div id="gameboard" class="gameboard disable-dbl-tap-zoom"></div>
+      </div>
+      
+
+      <div class="stat-tracker-container">
+        <div
+          class="stats point-tracker-container display-none"
+          id="point-tracker-container"
+        ></div>
+
+        <div class="stats time-tracker-container" id="time-tracker-container">
+          <div class="stats-cell">
+            <p>Time</p>
+            <h2 id="time-passed"></h2>
+          </div>
+          <div class="stats-cell">
+            <p>Moves</p>
+
+            <h2 id="total-moves-indicator"></h2>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="win-container" class="win-container">
+      <div class="leaderboard-container display-none">
+        <h1>Leaderboard</h1>
+        <div class="leaderboard-titles">
+          <h3>Name</h3>
+          <h3>Time</h3>
+          <h3 class="end-score">Moves</h3>
+        </div>
+        <div class="leaderboard"></div>
         <div class="button-container">
-            <button id="find-game-btn" class=" btn start-online-btn orange-btn">Find Game</button>
-            <button id="create-lobby-btn" class=" btn start-online-btn orange-btn">Create Lobby</button>
-            <button id="find-lobby-btn" class=" btn start-online-btn orange-btn">Find Lobby</button>
+          <button class="btn orange-btn go-back-leaderboard-btn">
+            Go Back
+          </button>
         </div>
       </div>
-    </div>
+      <div class="win-menu">
+        <div
+          class="player-win-menu display-none"
+          id="single-player-win-container"
+        >
+          <h1>You did it!</h1>
+          <p>Game over! Here's how you got on...</p>
+          <div class="player-stats-container">
+            <p>Time Elapsed</p>
+            <h2 id="total-time-win">4</h2>
+          </div>
 
-  </section>
-
-  <!--      In Game Menu     -->
-  <section class="in-game-menu-container display-none">
-    <div class="in-game-menu">
-      <button class="orange-btn btn" id="restart-btn">Restart</button>
-      <button class="btn" id="new-game-btn">New Game</button>
-      <button class="btn" id="resume-game-btn">Resume Game</button>
-    </div>
-
-  </section>
-
-  <!--      Gameboard Container     -->
-
-  <section class="gameboard-container display-none" id="gameboard-container">
-    <div class="gameboard-header">
-      <img src="./assets/logo.svg">
-      <button class="orange-btn btn" id="in-game-menu-btn">Menu</button>
-    </div>
-    <div id="gameboard" class="gameboard disable-dbl-tap-zoom">
-    </div>
-
-    <div class="stat-tracker-container">
-      <div class="stats point-tracker-container display-none" id="point-tracker-container">
-      </div>
-
-      <div class="stats time-tracker-container" id="time-tracker-container">
-        <div class="stats-cell">
-          <p>Time</p>
-          <h2 id="time-passed"></h2>
+          <div class="player-stats-container">
+            <p>Moves Taken</p>
+            <h2 id="total-moves-win">4</h2>
+          </div>
         </div>
-        <div class="stats-cell">
-          <p>Moves</p>
 
-          <h2 id="total-moves-indicator"></h2>
+        <div id="multi-player-win-container" class="player-win-menu">
+          <h1>We have a winner!</h1>
+          <p>Game over! Here are the results</p>
+          <div
+            class="player-results-container"
+            id="player-results-container"
+          ></div>
+        </div>
+        <div class="button-container">
+          <button class="btn" id="win-restart-btn">Restart</button>
+          <button class="btn" id="setup-new-game-btn">Setup New Game</button>
+        </div>
+        <div class="button-container">
+          <button class="btn orange-btn" id="leaderboard-btn">
+            View Leaderboard
+          </button>
         </div>
       </div>
-    </div>
+    </section>
 
-  </section>
-
-  <section id="win-container" class="win-container">
-    <div class="leaderboard-container display-none">
-      <h1>Leaderboard</h1>
-      <div class="leaderboard-titles">
-        <h3>Name</h3>
-        <h3>Time</h3>
-        <h3 class="end-score">Moves</h3>
-      </div>
-      <div class="leaderboard">
-        
-      </div>
-      <div class="button-container">
-        <button class="btn orange-btn go-back-leaderboard-btn">Go Back</button>
-      </div>
-    </div>
-    <div class="win-menu">
-      <div class="player-win-menu display-none " id="single-player-win-container">
-        <h1>You did it!</h1>
-        <p>Game over! Here's how you got on...</p>
-        <div class="player-stats-container">
-          <p>Time Elapsed</p>
-          <h2 id="total-time-win">4</h2>
-        </div>
-  
-        <div class="player-stats-container">
-          <p>Moves Taken</p>
-          <h2 id="total-moves-win">4</h2>
-        </div>
-        
-      </div>
-  
-      <div id="multi-player-win-container" class="player-win-menu">
-        <h1>We have a winner!</h1>
-        <p>Game over! Here are the results</p>
-        <div class="player-results-container" id="player-results-container">
-  
-        </div>
-      </div>
-      <div class="button-container">
-        <button class="btn " id="win-restart-btn">Restart</button>
-        <button class="btn" id="setup-new-game-btn">Setup New Game</button>
-      </div>
-      <div class="button-container ">
-        <button class="btn orange-btn" id="leaderboard-btn">View Leaderboard</button>
-
-      </div>
-
-    </div>
-    
-
-    
-  </section>
-
-
-
-
-  <script src="./script.js"></script>
-
-
-</body>
-
+    <script src="./script.js"></script>
+  </body>
 </html>

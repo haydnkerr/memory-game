@@ -1,3 +1,16 @@
+/* 
+  Table of Contents
+  -----------------
+  1. Base Styles
+  2. Typography
+  3. Home Menu
+  4. In Game Menu
+  5. Gameboard
+  6. Points/Time Section
+  7. Win Screen
+  8. Responsiveness
+*/
+
 * {
     padding: 0;
     margin: 0;
@@ -9,6 +22,7 @@
     --secondary-color: #BCCED9;
     --hover-color: #6395B8;
     --accent-color: #FDA214;
+    --primary-font: "Permanent Marker";
 }
 
 body {
@@ -17,7 +31,7 @@ body {
     background-color: white;
     justify-content: center;
     align-items: center;
-    font-family: "Atkinson Hyperlegible";
+    font-family: var(--primary-font);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -86,10 +100,52 @@ p {
     font-weight: 600;
 }
 
+.home-menu {
+    background: none;
+    background-image: url("./assets/pond-bg-upright.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    border-radius: 10px;
+    padding: 50px 100px;
+    display: flex;
+    background-position: center;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    height: 100vh;
+    width: 100vw;
+    /* height: 90vh; */
+    max-width: 1000px;
+    overflow: visible;
+}
+
+.home-menu-top, .home-menu-bottom {
+    display: flex;
+    justify-content: space-between;
+    gap: 100px;
+}
+
+.home-menu-bottom {
+    width: 100%;
+    padding: 0px 35px;
+    gap: 25px;
+}
+
+.home-lillie-pad {
+    width: 90px;
+    transform: rotate(-25deg);
+}
+
+.lillie-reverse {
+    transform: rotate(25deg);
+}
+
 .home-menu-item {
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 15px;
+    align-items: center;
 }
 
 .online-menu {
@@ -99,14 +155,14 @@ p {
 
 .button-container {
     display: flex;
-    gap: 10px;
-    width: 100%;
+    gap: 20px;
+    /* width: 100%;
+    max-width: */
 }
 
 .quad-btn-container {
     display: flex;
-    flex-direction: column;
-    gap: 10px;
+    gap: 15px;
 }
 
 .btn {
@@ -122,27 +178,113 @@ p {
     transition: 0.4s;
 }
 
+.btn {
+    flex: 1;
+    padding: 15px 0px;
+    border-radius: 70px;
+    border: none;
+    color: white;
+    background-color: var(--secondary-color);
+    font-family: var(--primary-font);
+    background: none;
+    /* background-image: url("./assets/back-lilypad.png"); */
+    font-weight: 700;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    letter-spacing: 0.5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: 0.4s;
+    opacity: 0.75;
+    /* max-height: 75px; */
+}
+
+.lily-pad-bg {
+    background-image: url("./assets/back-lilypad.png");
+    padding: 25px 20px;
+    
+}
 
 
 .btn.active {
-    background-color: var(--primary-color);
+    /* background-color: var(--ssmc-purple); */
+    opacity: 1;
+    transform: scale(1.35);
 }
 
 .btn:hover {
-    background-color: var(--hover-color);
+    /* background-color: var(--hover-color); */
+    opacity: 1;
+    transform: scale(1.2);
+}
+
+.btn.active:hover {
+    /* background-color: var(--ssmc-purple); */
+    transform: scale(1.35);
 }
 
 .btn:focus {
-    background-color: var(--primary-color);
+    /* background-color: var(--ssmc-purple); */
 }
 
 .orange-btn {
-    background-color: var(--accent-color);
+    background-color: var(--ssmc-green);
 }
 
 .orange-btn:hover {
-    background-color: #f9c36b;
+    background-color: #add96b;
 }
+
+.plank-bg {
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    padding: 10px 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    font-size: 1.75rem;
+    opacity: 1;
+    flex: none;
+    border-radius: 0;
+}
+
+.plank-one {
+    background-image: url("./assets/plank-one.png");
+}
+
+.plank-two {
+    background-image: url("./assets/plank-two.png");
+}
+
+.num-players-btn {
+    width: 80px;
+    font-size: 2rem;
+}
+
+.start-game-btn {
+    background: none;
+    border: none;
+    background-image: url("./assets/plank-two.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    padding: 10px;
+    font-size: 1.85rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    opacity: 1;
+    border-radius: 0;
+    flex: none;
+}
+
+
 
 /************* In Game Menu *******************/
 .in-game-menu-container {
@@ -201,6 +343,39 @@ p {
     max-width: 525px;
 }
 
+.gameboard-bg {
+    /* background-size: 95%;
+    background-image: url("./assets/pond-bg-upright.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 50px;
+    aspect-ratio: 6/5;
+    max-width: 850px;
+    padding: 0px 150px; */
+
+    /* background-color: #FCFCFC;  */
+    background-image: url("./assets/pond-bg-upright.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    border-radius: 10px;
+    padding: 50px 100px;
+    display: flex;
+    background-position: center;
+    flex-direction: column;
+    justify-content: center;
+    gap: 20px;
+    height: 100vh;
+    width: 100vw;
+    align-items: center;
+    /* height: 90vh; */
+    max-width: 850px;
+    overflow: visible;
+}
+
 .game-piece {
     grid-column: span 1;
     grid-row: span 1;
@@ -234,15 +409,19 @@ p {
 }
 
 .game-piece-front {
-    background-color: var(--primary-color);
+    /* background-color: var(--primary-color); */
+    background-image: url("./assets/front-lilypad.png");
+    background-repeat: no-repeat;
+    background-size: 98%;
+    background-position: 50% 85%;
 }
 
 .game-piece-back {
-    background-color: var(--secondary-color);
-    background-image: url("./assets/five.svg");
+    /* background-color: var(--secondary-color); */
+    background-image: url("./assets/back-lilypad.png");
     background-repeat: no-repeat;
-    background-position: center;
-    background-size: 60%;
+    background-size: 98%;
+    background-position: 50% 85%;
     transform: rotateY(180deg);
     display: flex;
     justify-content: center;
@@ -252,58 +431,70 @@ p {
 /* .game-piece:hover .game-piece-inner {
     transform: rotateY(180deg);
   } */
+.game-piece:hover {
+    transform: scale(1.05);
+}
 
   .chosen-piece {
     transform: rotateY(180deg);
   }
 
 
-.chosen-piece .game-piece-back {
+/* .chosen-piece .game-piece-back {
     background-color: var(--accent-color);
 }
 
 .discovered-piece .game-piece-back {
     background-color: var(--secondary-color);
+} */
+
+.discovered-piece .game-piece {
+    transform: scale(0.85);
+}
+
+.discovered-piece .game-piece-back {
+    opacity: 0.60
 }
 
 
-.active-piece:hover .game-piece-front {
+/* .active-piece:hover .game-piece-front {
     background-color: var(--hover-color);
-}
+} */
 
 .zero {
-    background-image: url("./assets/crocodile.png");
-
+    
+    background-image: url("./assets/lillie-pad.png");
 }
 
 .one {
     
-    background-image: url("./assets/elephant.png");
+    background-image: url("./assets/boozoo-pad.png");
 
 }
 
 .two {
-    background-image: url("./assets/cow.png");
+    background-image: url("./assets/lucy-pad.png");
 
 }
 
 .three {
-    background-image: url("./assets/dog.png");
+    background-image: url("./assets/bird-pad.png");
+
 
 }
 
 .four {
-    background-image: url("./assets/dolphin.png");
+    background-image: url("./assets/dino-pad.png");
 
 }
 
 .five {
-    background-image: url("./assets/fish.png");
+    background-image: url("./assets/logo-pad.png");
 
 }
 
 .six {
-    background-image: url("./assets/lion.png");
+    background-image: url("./assets/egg-pad.png");
 
 }
 
@@ -572,5 +763,17 @@ grid-template-columns: 2fr 1fr 1fr;
     
     .username-container input {
         width: 100%;
+    }
+}
+
+@media only screen and (min-width: 650px) {
+
+    .home-menu {
+        background-image: url("./assets/pond-bg.png");
+
+    }
+
+    .gameboard-bg {
+        background-image: url("./assets/pond-bg.png");
     }
 }

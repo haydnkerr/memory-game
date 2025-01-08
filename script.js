@@ -87,7 +87,7 @@ themeBtn.forEach(function (btn) {
 
 numPlayersBtn.forEach(function (btn) {
     btn.addEventListener('click', function () {
-        for (let i = 0; i < 4; i++) {
+        for (let i = 0; i < 2; i++) {
             numPlayersBtn[i].classList.remove('active')
         }
         this.classList.add('active')
@@ -108,7 +108,7 @@ gridSizeBtn.forEach(function (btn) {
             gameboard.style.gridTemplateRows = "repeat(2,1fr)"
             gameboard.style.aspectRatio = 4 / 3
         }
-        for (let i = 0; i < 4; i++) {
+        for (let i = 0; i < 3; i++) {
             gridSizeBtn[i].classList.remove('active')
         }
         this.classList.add('active')
