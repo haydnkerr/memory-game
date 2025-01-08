@@ -33,7 +33,7 @@
   <body>
     <!--      Home Menu     -->
     <section id="home-menu-container" class="home-menu-container">
-      <h1>Lillie's memory Pads</h1>
+      <!-- <h1>Lillie's Memory Pads</h1>
 
       <form class="username-container">
         <input
@@ -46,9 +46,26 @@
         <button type="submit" class="btn orange-btn submit-name-btn">
           Submit
         </button>
-      </form>
-      <div class="home-menu  display-none">
-        <div class="home-menu-top">
+      </form> -->
+      <div class="home-menu ">
+        
+        <div class="username-container">
+          <h1>Lillie's Memory Pads</h1>
+          <form class="username-form">
+            <input
+              type="text"
+              placeholder="Enter your name.."
+              class="username"
+              maxlength="10"
+            />
+    
+            <button type="submit" class="btn plank-bg plank-one submit-name-btn">
+              Submit
+            </button>
+          </form>
+        </div>
+      
+        <div class="home-menu-top display-none">
           <div class="home-menu-item theme-menu">
             <h3 class="home-menu-item-heading theme-heading plank-bg plank-one">
               Theme
@@ -69,7 +86,7 @@
           </div>
         </div>
 
-        <div class="home-menu-middle">
+        <div class="home-menu-middle display-none">
           <div class="home-menu-item">
             <h3 class="grid-heading plank-bg plank-one">Grid Size</h3>
             <div class="quad-btn-container">
@@ -98,7 +115,7 @@
             class="home-lillie-pad lillie-reverse"
             src="./assets/lillie-home-logo.png"
           />
-          <button id="start-game-btn" class="btn start-game-btn">
+          <button id="start-game-btn" class="btn start-game-btn display-none">
             Start Game
           </button>
           <img class="home-lillie-pad" src="./assets/lillie-home-logo.png" />
@@ -216,12 +233,9 @@
         <div class="button-container">
           <button class="btn plank-bg plank-two" id="win-restart-btn">Restart</button>
           <button class="btn plank-bg plank-one" id="setup-new-game-btn">New Game</button>
+          <button class="btn plank-bg plank-one" id="leaderboard-btn">Leaderboard</button>
         </div>
-        <div class="button-container">
-          <button class="btn plank-bg plank-one" id="leaderboard-btn">
-            Leaderboard
-          </button>
-        </div>
+
       </div>
     </section>
 

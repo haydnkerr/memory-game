@@ -4,6 +4,8 @@ let usernameContainer = document.querySelector('.username-container')
 let usernameInput = document.querySelector('.username')
 let submitNameBtn = document.querySelector('.submit-name-btn')
 let homeMenu = document.getElementById('home-menu-container')
+let homeMenuTop = document.querySelector('.home-menu-top')
+let homeMenuMiddle = document.querySelector('.home-menu-middle')
 let mainMenu = document.querySelector('.home-menu')
 let startGameBtn = document.getElementById('start-game-btn')
 let findGameBtn = document.getElementById('find-game-btn')
@@ -45,7 +47,10 @@ submitNameBtn.addEventListener('click', function (event) {
     if (usernameInput.value.length > 0) {
         playerName = usernameInput.value;
         usernameContainer.classList.add('display-none');
-        mainMenu.classList.remove('display-none')
+        mainMenu.classList.remove('display-none');
+        homeMenuTop.classList.remove('display-none');
+        homeMenuMiddle.classList.remove('display-none');
+        startGameBtn.classList.remove('display-none');
     }
 })
 
