@@ -84,8 +84,8 @@ app.get('/leaderboard', async (req, res) => {
             tableName = 'highscores_3x2';
         } else if (gridSize == 16) {
             tableName = 'highscores_4x4';
-        } else if (gridSize == 36) {
-            tableName = 'highscores_6x6';
+        } else if (gridSize == 20) {
+            tableName = 'highscores_5x4';
         }
 
         const { data, error } = await supabase
