@@ -47,7 +47,7 @@ h2 {}
 
 h3 {
     font-size: 0.95rem;
-    color: #7191A5
+    color: white
 }
 
 p {
@@ -701,7 +701,7 @@ p {
 }
 
 .win-container p {
-    color: #7191A5
+    color: #152938
 }
 
 .leaderboard-titles {
