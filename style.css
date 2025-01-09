@@ -68,6 +68,7 @@ p {
     gap: 50px
 }
 
+
 .home-menu-container h2 {
     color: white;
 }
@@ -84,6 +85,17 @@ p {
     width: 100%;
     max-width: 550px;
 }
+
+.username-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.title-logo {
+    width: 400px;
+}
+
 
 .username-form {
     flex-direction: row;
@@ -161,7 +173,7 @@ p {
 
 .button-container {
     display: flex;
-    gap: 10px;
+    gap: 20px;
     /* width: 100%;
     max-width: */
 }
