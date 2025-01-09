@@ -176,10 +176,12 @@ inGameGoBackLeaderboardBtn.addEventListener('click', function() {
 
 inGameLeaderboardBtn.addEventListener('click', function() {
     inGameGoBackLeaderboardBtn.classList.remove('display-none');
+    goBackLeaderboardBtn.classList.add('display-none');
     fetchLeaderboard(gridSize);
 });
 
 leaderboardBtn.addEventListener('click', function() {
+    inGameGoBackLeaderboardBtn.classList.add('display-none');
     goBackLeaderboardBtn.classList.remove('display-none');
     fetchLeaderboard(gridSize);
 });
@@ -423,6 +425,7 @@ function submitScore() {
 
 function winFunction() {
     winContainer.classList.remove('display-none')
+    winMenu.classList.remove('display-none')
 }
 
 function initiateOnlineGame() {
