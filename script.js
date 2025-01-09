@@ -102,18 +102,26 @@ numPlayersBtn.forEach(function (btn) {
 
 gridSizeBtn.forEach(function (btn) {
     btn.addEventListener('click', function () {
+        let templateRow;
         if (btn.value % 2 === 0) {
             gridSize = btn.value * btn.value
             gameboard.style.gridTemplateColumns = "repeat(" + btn.value + ",1fr)"
             gameboard.style.gridTemplateRows = "repeat(" + btn.value + ",1fr)"
             gameboard.style.aspectRatio = 1 / 1
         } else {
-            gridSize = 6
-            gameboard.style.gridTemplateColumns = "repeat(3,1fr)"
-            gameboard.style.gridTemplateRows = "repeat(2,1fr)"
+            if (btn.value == 3) {
+                gridSize = 6
+                templateRow = 2;
+            } else {
+                gridSize = 20
+                templateRow = 4;
+            }
+            
+            gameboard.style.gridTemplateColumns = "repeat(" + btn.value + ",1fr)"
+            gameboard.style.gridTemplateRows = "repeat(" + templateRow + ",1fr)"
             gameboard.style.aspectRatio = 4 / 3
         }
-        for (let i = 0; i < 3; i++) {
+        for (let i = 0; i < 4; i++) {
             gridSizeBtn[i].classList.remove('active')
         }
         this.classList.add('active')
@@ -498,7 +506,7 @@ function initiateGame() {
             element.style.fontSize = "4rem"
         } else if (gridSize == 16) {
             element.style.fontSize = "2.75rem"
-        } else if (gridSize == 36) {
+        } else if (gridSize == 20) {
             element.style.fontSize = "1.35rem"
         }
 
