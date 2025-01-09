@@ -144,24 +144,35 @@ let inGameLeaderboardBtn = document.getElementById('in-game-leaderboard-btn')
 let leaderboardBtn = document.getElementById('leaderboard-btn')
 let leaderboardContainer = document.querySelector('.leaderboard-container')
 let goBackLeaderboardBtn = document.querySelector('.go-back-leaderboard-btn')
+let inGameGoBackLeaderboardBtn = document.querySelector('.in-game-go-back-leaderboard-btn')
+
 
 inGameMenuBtn.addEventListener('click', toggleInGameMenu)
 resumeGameBtn.addEventListener('click', resumeGame)
 restartBtn.addEventListener('click', function () {
     initiateGame();
+    winContainer.classList.add('display-none');
     gameboard.classList.toggle('display-none')
 })
+
 goBackLeaderboardBtn.addEventListener('click', function() {
     winMenu.classList.remove('display-none');
     leaderboardContainer.classList.add('display-none')
 })
+
+inGameGoBackLeaderboardBtn.addEventListener('click', function() {
+    inGameMenu.classList.remove('display-none');
+    winContainer.classList.add('display-none');
+    leaderboardContainer.classList.add('display-none');
+})
+
 inGameLeaderboardBtn.addEventListener('click', function() {
-    
+    inGameGoBackLeaderboardBtn.classList.remove('display-none');
     fetchLeaderboard(gridSize);
 });
 
 leaderboardBtn.addEventListener('click', function() {
-    
+    goBackLeaderboardBtn.classList.remove('display-none');
     fetchLeaderboard(gridSize);
 });
 
@@ -223,9 +234,10 @@ function fetchLeaderboard(grid) {
         }
     })
     .catch(error => console.error('Error fetching data:', error));
+    winContainer.classList.remove('display-none');
     winMenu.classList.add('display-none');
     inGameMenu.classList.add('display-none');
-    leaderboardContainer.classList.remove('display-none')
+    leaderboardContainer.classList.remove('display-none');
 }
 
 
