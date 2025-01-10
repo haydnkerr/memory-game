@@ -225,10 +225,7 @@ p {
     
 }
 
-.in-game-menu-btn {
-    width: 400px;
-    aspect-ratio: 1;
-}
+
 
 
 .btn.active {
@@ -328,17 +325,20 @@ p {
 .museum-logo {
     width: 250px
 }
-.in-game-menu-btn {
+.open-in-game-menu-btn {
     width: 135px;
+    height: 100px;
+}
+
+.in-game-menu-btn {
+    width: 200px;
     height: 100px;
 }
 
 .in-game-menu {
     display: flex;
     flex-direction: column;
-    gap: 25px;
-    width: 225px;
-    
+    gap: 10px;
 }
 
 /**************   Gameboard Container   **************/
@@ -798,7 +798,7 @@ grid-template-columns: 2fr 1fr 1fr;
     }
 }
 
-@media only screen and (min-width: 650px) {
+@media only screen and (min-width: 700px) {
 
     .home-menu {
         background-image: url("./assets/pond-bg.png");
