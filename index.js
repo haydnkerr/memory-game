@@ -11,8 +11,8 @@ const port = process.env.PORT || 3000
 const { createClient } = require('@supabase/supabase-js');
 
 // Initialize Supabase client
-const supabaseUrl = 'https://bimkjndwwnqlcqrtmlln.supabase.co';
-const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJpbWtqbmR3d25xbGNxcnRtbGxuIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzYyNjU2MDEsImV4cCI6MjA1MTg0MTYwMX0.RLoGj-K3TYbXLZylb4HIlNVwHGlM2KoUR1aufIzlhhE';
+const supabaseUrl = process.env.SUPABASE_URL;
+const supabaseKey = process.env.SUPABASE_KEY;
 const supabase = createClient(supabaseUrl, supabaseKey);
 
 
