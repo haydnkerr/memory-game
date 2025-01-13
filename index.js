@@ -45,9 +45,8 @@ let playerTwoArray = []
 //     return res.sendFile("index.html")
 // })
 
-app.get('/', (req, res) => {
-    return res.sendFile(path.resolve('index.html'));
-});
+
+
 
 
 app.post('/postScore', async (req, res) => {
@@ -126,11 +125,17 @@ app.get('/leaderboard', async (req, res) => {
     }
 });
 
-
-
 app.get('/', (req, res) => {
-    return res.sendFile("index.html")
-})
+    return res.sendFile(path.resolve('index.html'));
+});
+
+app.listen(port, () => {
+    console.log(`Example app listening on port ${port}`)
+  })
+
+
+
+
 
 
 
