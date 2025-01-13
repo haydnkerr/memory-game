@@ -74,14 +74,14 @@ app.get('/leaderboard', async (req, res) => {
 
     try {
         let tableName;
-        if (gridSize == 4) {
-            tableName = 'highscores_2x2';
-        } else if (gridSize == 6) {
-            tableName = 'highscores_3x2';
+        if (gridSize == 6) {
+            tableName = 'highscores_2x3';
+        } else if (gridSize == 12) {
+            tableName = 'highscores_3x4';
         } else if (gridSize == 16) {
             tableName = 'highscores_4x4';
         } else if (gridSize == 20) {
-            tableName = 'highscores_5x4';
+            tableName = 'highscores_4x5';
         }
 
         const { data, error } = await supabase
@@ -112,9 +112,7 @@ app.get('/', (req, res) => {
     return res.sendFile("index.html")
 })
 
-server.listen(3000, () => {
-    console.log("port connected to 3000")
-})
+
 
 function generateLobbyCode() {
     let result = "";
