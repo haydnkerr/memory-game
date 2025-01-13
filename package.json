@@ -16,6 +16,11 @@
     "@supabase/supabase-js": "^2.47.12",
     "bad-words": "^4.0.0",
     "dotenv": "^16.4.7",
-    "express": "^4.21.2"
-  }
+    "express": "^4.21.2",
+    "punycode": "^2.3.1"
+  },
+  "resolutions": {
+  "punycode": "^2.0.0"
+}
+
 }

@@ -14,8 +14,9 @@ import express from 'express';
 const app = express();
 
 import path from 'path';
-// import http from 'http';
+import http from 'http';
 import { Filter } from 'bad-words';
+let filter = new Filter();
 
 
 const port = process.env.PORT || 3000;
@@ -40,9 +41,14 @@ let playerArray = []
 let playerOneArray = []
 let playerTwoArray = []
 
+// app.get('/', (req, res) => {
+//     return res.sendFile("index.html")
+// })
+
 app.get('/', (req, res) => {
-    return res.sendFile("index.html")
-})
+    return res.sendFile(path.resolve('index.html'));
+});
+
 
 app.post('/postScore', async (req, res) => {
     const { playerName, time, totalMoves, gridSize } = req.body;
@@ -59,7 +65,7 @@ app.post('/postScore', async (req, res) => {
             tableName = 'highscores_4x5';
         }
 
-        filter = new Filter();
+        
 
         cleanWord = filter.clean(playerName)
  
