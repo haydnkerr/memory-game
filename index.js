@@ -4,7 +4,6 @@ const express = require("express");
 const app = express();
 const path = require("path");
 const http = require("http");
-const { Server } = require("socket.io");
 const Filter = require('bad-words');
 const port = process.env.PORT || 3000
 
@@ -16,9 +15,6 @@ const supabaseKey = process.env.SUPABASE_KEY;
 const supabase = createClient(supabaseUrl, supabaseKey);
 
 
-const server = http.createServer(app);
-
-const io = new Server(server);
 
 app.use(express.static(path.resolve("")));
 
@@ -39,14 +35,14 @@ app.post('/postScore', async (req, res) => {
 
     try {
         let tableName;
-        if (gridSize == 4) {
-            tableName = 'highscores_2x2';
-        } else if (gridSize == 6) {
-            tableName = 'highscores_3x2';
+        if (gridSize == 6) {
+            tableName = 'highscores_2x3';
+        } else if (gridSize == 12) {
+            tableName = 'highscores_3x4';
         } else if (gridSize == 16) {
             tableName = 'highscores_4x4';
         } else if (gridSize == 20) {
-            tableName = 'highscores_5x4';
+            tableName = 'highscores_4x5';
         }
         var Filter = require('bad-words'),
     filter = new Filter();
@@ -111,66 +107,6 @@ app.get('/leaderboard', async (req, res) => {
 });
 
 
-
-// io.on("connection", (socket) => {
-//     console.log("a user connected");
-
-//     socket.on("find", (e) => {
-//         if (e.name != null) {
-//             randomArr.push(e.name)
-//             if (arr.length >= 2) {
-//                 let p1obj = {
-//                     p1name: arr[0],
-//                     p1value: "red",
-//                     p1move: "",
-//                     p1arr: [],
-//                     p1score: 0
-//                 }
-//                 let p2obj = {
-//                     p2name: arr[1],
-//                     p2value: "yellow",
-//                     p2move: "",
-//                     p2arr: [],
-//                     p2score: 0
-//                 }
-
-//                 let randomLobby = generateLobbyCode()
-
-//                 let obj = {
-//                     p1: p1obj,
-//                     p2: p2obj,
-//                     sum: 1,
-//                     lobby: randomLobby
-
-//                 }
-
-//                 randomArr = [];
-
-//                 playerArray.push(obj)
-//                 console.log(playerArray)
-
-
-//                 io.emit('find', { allPlayers: playerArray })
-
-//             }
-//         }
-//     })
-
-//     socket.on("create", (e) => {
-
-//     })
-
-//     socket.on("join", (e) => {
-
-//     })
-
-
-
-//     socket.on("disconnect", () => {
-//         console.log("user disconnected");
-//     });
-
-// });
 
 app.get('/', (req, res) => {
     return res.sendFile("index.html")

@@ -102,23 +102,27 @@ numPlayersBtn.forEach(function (btn) {
 
 gridSizeBtn.forEach(function (btn) {
     btn.addEventListener('click', function () {
-        let templateRow;
-        if (btn.value % 2 === 0) {
+        let templateCol;
+        if (btn.value == 4) {
             gridSize = btn.value * btn.value
             gameboard.style.gridTemplateColumns = "repeat(" + btn.value + ",1fr)"
             gameboard.style.gridTemplateRows = "repeat(" + btn.value + ",1fr)"
             gameboard.style.aspectRatio = 1 / 1
         } else {
-            if (btn.value == 3) {
+            if (btn.value == 2) {
                 gridSize = 6
-                templateRow = 2;
-            } else {
+                templateCol = 3;
+            } else if (btn.value == 3) {
+                gridSize = 12
+                templateCol = 4;
+            } else  {
                 gridSize = 20
-                templateRow = 4;
+                templateCol = 5;
+                btn.value = 4
             }
             
-            gameboard.style.gridTemplateColumns = "repeat(" + btn.value + ",1fr)"
-            gameboard.style.gridTemplateRows = "repeat(" + templateRow + ",1fr)"
+            gameboard.style.gridTemplateColumns = "repeat(" + templateCol + ",1fr)"
+            gameboard.style.gridTemplateRows = "repeat(" + btn.value + ",1fr)"
             gameboard.style.aspectRatio = 4 / 3
         }
         for (let i = 0; i < 4; i++) {
