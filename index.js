@@ -66,7 +66,14 @@ app.post('/postScore', async (req, res) => {
 
         
 
-        cleanWord = filter.clean(playerName)
+        // cleanWord = filter.clean(playerName)
+
+        function sanitizeInput(name) {
+            const cleanName = filter.clean(name); // Clean offensive words
+            return cleanName.replace(/[:"'--]/g, ''); // Remove unwanted characters
+        }
+
+        const cleanWord = sanitizeInput(playerName);
  
 
         const { data, error } = await supabase.from(tableName).insert({
