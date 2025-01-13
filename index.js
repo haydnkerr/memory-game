@@ -1,13 +1,27 @@
-require('dotenv').config()
+// require('dotenv').config()
 
-const express = require("express");
+// const express = require("express");
+// const app = express();
+// const path = require("path");
+// const http = require("http");
+// const Filter = require('bad-words');
+// const port = process.env.PORT || 3000
+
+import dotenv from 'dotenv';
+dotenv.config();
+
+import express from 'express';
 const app = express();
-const path = require("path");
-const http = require("http");
-const Filter = require('bad-words');
-const port = process.env.PORT || 3000
 
-const { createClient } = require('@supabase/supabase-js');
+import path from 'path';
+// import http from 'http';
+import { Filter } from 'bad-words';
+
+
+const port = process.env.PORT || 3000;
+
+
+import { createClient } from '@supabase/supabase-js';
 
 // Initialize Supabase client
 const supabaseUrl = process.env.SUPABASE_URL;
@@ -44,10 +58,10 @@ app.post('/postScore', async (req, res) => {
         } else if (gridSize == 20) {
             tableName = 'highscores_4x5';
         }
-        var Filter = require('bad-words'),
-    filter = new Filter();
 
-    cleanWord = filter.clean(playerName)
+        filter = new Filter();
+
+        cleanWord = filter.clean(playerName)
  
 
         const { data, error } = await supabase.from(tableName).insert({
