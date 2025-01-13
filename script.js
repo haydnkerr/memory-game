@@ -199,7 +199,6 @@ function fetchLeaderboard(grid) {
     }) 
     .then(response => response.json())
     .then(data => {
-        console.log(data.length);
         // Handle the fetched data here
         let leaderboard = document.querySelector('.leaderboard')
         while (leaderboard.firstChild) {
@@ -507,9 +506,9 @@ function initiateGame() {
     let gamePieceBack = document.querySelectorAll('.game-piece-back')
 
     gamePieceBack.forEach(function (element) {
-        if (gridSize == 4) {
+        if (gridSize == 6) {
             element.style.fontSize = "5rem"
-        } else if (gridSize == 6) {
+        } else if (gridSize == 12) {
             element.style.fontSize = "4rem"
         } else if (gridSize == 16) {
             element.style.fontSize = "2.75rem"
