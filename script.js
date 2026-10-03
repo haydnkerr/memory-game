@@ -349,7 +349,7 @@ function chooseTile() {
 }
 
 function determinePair() {
-    let gamePiece = document.querySelectorAll('.game-piece')
+    let gamePice = document.querySelectorAll('.game-piece')
     if (choiceOneValue == choiceTwoValue) {
         if (currentPlayer == 1) {
             playerOneScore += 1
