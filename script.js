@@ -115,12 +115,12 @@ gridSizeBtn.forEach(function (btn) {
             } else if (btn.value == 3) {
                 gridSize = 12
                 templateCol = 4;
-            } else  {
+            } else {
                 gridSize = 20
                 templateCol = 5;
                 btn.value = 4
             }
-            
+
             gameboard.style.gridTemplateColumns = "repeat(" + templateCol + ",1fr)"
             gameboard.style.gridTemplateRows = "repeat(" + btn.value + ",1fr)"
             gameboard.style.aspectRatio = 4 / 3
@@ -167,24 +167,24 @@ restartBtn.addEventListener('click', function () {
     gameboard.classList.toggle('display-none')
 })
 
-goBackLeaderboardBtn.addEventListener('click', function() {
+goBackLeaderboardBtn.addEventListener('click', function () {
     winMenu.classList.remove('display-none');
     leaderboardContainer.classList.add('display-none')
 })
 
-inGameGoBackLeaderboardBtn.addEventListener('click', function() {
+inGameGoBackLeaderboardBtn.addEventListener('click', function () {
     inGameMenu.classList.remove('display-none');
     winContainer.classList.add('display-none');
     leaderboardContainer.classList.add('display-none');
 })
 
-inGameLeaderboardBtn.addEventListener('click', function() {
+inGameLeaderboardBtn.addEventListener('click', function () {
     inGameGoBackLeaderboardBtn.classList.remove('display-none');
     goBackLeaderboardBtn.classList.add('display-none');
     fetchLeaderboard(gridSize);
 });
 
-leaderboardBtn.addEventListener('click', function() {
+leaderboardBtn.addEventListener('click', function () {
     inGameGoBackLeaderboardBtn.classList.add('display-none');
     goBackLeaderboardBtn.classList.remove('display-none');
     fetchLeaderboard(gridSize);
@@ -196,57 +196,57 @@ function fetchLeaderboard(grid) {
         headers: {
             'Content-Type': 'application/json'
         }
-    }) 
-    .then(response => response.json())
-    .then(data => {
-        // Handle the fetched data here
-        let leaderboard = document.querySelector('.leaderboard')
-        while (leaderboard.firstChild) {
-            leaderboard.removeChild(leaderboard.firstChild);
-        }
-        for (let i = 0; i < data.length; i++) {
-            let rank = i + 1
-            let playerRanking = document.createElement('div'); 
-            playerRanking.classList.add('player-ranking')
-            if (i == 0) {
-                playerRanking.classList.add('winner')
-            }
-            let playerRankingName = document.createElement('p')
-            playerRankingName.textContent = rank + '. '+ data[i].player_name
-            playerRanking.appendChild(playerRankingName)
-
-            let playerRankingScore = document.createElement('p')
-            if (data[i].score < 10) {
-                playerRankingScore.textContent = "0:0" + data[i].score
-            } else if(data[i].score < 60) {
-                playerRankingScore.textContent = "0:" + data[i].score
-            } else {
-                let mins = Math.floor(data[i].score / 60);
-                let secs = data[i].score % 60;
-                if (mins > 0) {
-                    if (secs < 10) {
-                        playerRankingScore.textContent = mins + ":0" + secs 
-                    } else {
-                        playerRankingScore.textContent = mins+ ":" + secs 
-                    }
-                } else {
-                    playerRankingScore.textContent = secs 
-                }
-                
-                
-            }
-
-            let playerMoves = document.createElement('p')
-            playerMoves.textContent = data[i].moves
-            playerMoves.classList.add('end-score')
-        
-            
-            playerRanking.appendChild(playerRankingScore)
-            playerRanking.appendChild(playerMoves)
-            leaderboard.appendChild(playerRanking)
-        }
     })
-    .catch(error => console.error('Error fetching data:', error));
+        .then(response => response.json())
+        .then(data => {
+            // Handle the fetched data here
+            let leaderboard = document.querySelector('.leaderboard')
+            while (leaderboard.firstChild) {
+                leaderboard.removeChild(leaderboard.firstChild);
+            }
+            for (let i = 0; i < data.length; i++) {
+                let rank = i + 1
+                let playerRanking = document.createElement('div');
+                playerRanking.classList.add('player-ranking')
+                if (i == 0) {
+                    playerRanking.classList.add('winner')
+                }
+                let playerRankingName = document.createElement('p')
+                playerRankingName.textContent = rank + '. ' + data[i].player_name
+                playerRanking.appendChild(playerRankingName)
+
+                let playerRankingScore = document.createElement('p')
+                if (data[i].score < 10) {
+                    playerRankingScore.textContent = "0:0" + data[i].score
+                } else if (data[i].score < 60) {
+                    playerRankingScore.textContent = "0:" + data[i].score
+                } else {
+                    let mins = Math.floor(data[i].score / 60);
+                    let secs = data[i].score % 60;
+                    if (mins > 0) {
+                        if (secs < 10) {
+                            playerRankingScore.textContent = mins + ":0" + secs
+                        } else {
+                            playerRankingScore.textContent = mins + ":" + secs
+                        }
+                    } else {
+                        playerRankingScore.textContent = secs
+                    }
+
+
+                }
+
+                let playerMoves = document.createElement('p')
+                playerMoves.textContent = data[i].moves
+                playerMoves.classList.add('end-score')
+
+
+                playerRanking.appendChild(playerRankingScore)
+                playerRanking.appendChild(playerMoves)
+                leaderboard.appendChild(playerRanking)
+            }
+        })
+        .catch(error => console.error('Error fetching data:', error));
     winContainer.classList.remove('display-none');
     winMenu.classList.add('display-none');
     inGameMenu.classList.add('display-none');
@@ -375,7 +375,7 @@ function determinePair() {
             if (numPlayers == 1) {
                 setTimeout(submitScore, 400);
             }
-            
+
             gameStart = false
             populateWinningScreen()
         }
@@ -417,13 +417,13 @@ function submitScore() {
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify({playerName: playerName, totalMoves: totalMoves, time: totalTime, gridSize: gridSize})
-    }) 
-    .then(response => response.json())
-    .then(data => {
-        console.log(data)
+        body: JSON.stringify({ playerName: playerName, totalMoves: totalMoves, time: totalTime, gridSize: gridSize })
     })
-    .catch(error => console.error('Error fetching data:', error));
+        .then(response => response.json())
+        .then(data => {
+            console.log(data)
+        })
+        .catch(error => console.error('Error fetching data:', error));
 }
 
 function winFunction() {
@@ -759,7 +759,7 @@ function determineTime() {
 
 /***********     This is for Online play      ***************/
 
-let lobbyCode;
+// let lobbyCode;
 
 
-const socket = io()
+// const socket = io()
